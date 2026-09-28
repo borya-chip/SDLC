@@ -1,0 +1,40 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class MainForm {
+  - lastBirthDate : DateTime?
+  + ShowInputDialog()
+  + RenderResult()
+}
+
+class InputForm {
+  + DayText : string
+  + MonthText : string
+  + YearText : string
+}
+
+class AgeController {
+  + CalculateAge(day, month, year)
+}
+
+class AgeModel {
+  + BirthDate : DateTime?
+  + Result : AgeCalculationResult?
+  + StateChanged : event
+  + Calculate(birthDate, today)
+}
+
+class AgeCalculationResult
+
+MainForm --> InputForm : opens
+MainForm --> AgeController : sends user input
+AgeController --> AgeModel : validates and updates
+AgeModel --> MainForm : StateChanged
+AgeModel --> AgeCalculationResult : stores
+
+note right of AgeModel
+Active model:
+after recalculation it notifies
+the view via StateChanged.
+end note
+@enduml

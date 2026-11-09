@@ -1,0 +1,5 @@
+{
+  "use-cases": "%viz --view=default --style=LR CarKeeperRequirements::carKeeperUseCases",
+  "domain-model": "%viz --view=tree CarKeeperDomain",
+  "ui-navigation": "%viz CarKeeperUI::CarKeeperWebUI"
+}

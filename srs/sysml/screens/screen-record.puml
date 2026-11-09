@@ -1,0 +1,55 @@
+@startuml
+skin sysmlbw
+<style>
+root {
+  FontName DejaVu Sans
+}
+</style>
+skinparam monochrome true
+skinparam wrapWidth 300
+hide circle
+skinparam linetype ortho
+
+package "CarKeeper_Record" as E1  [[psysml:2d14a33c-13af-41f5-9604-9bf1be4310d2 ]]  {
+comp def "RecordPage" as E2  <<(T,blue) part  def>> [[psysml:dec6b14f-939a-44c4-baf4-d3adfa7320fb ]] {
+##//attributes//##
+title <U+003D> "Новая запись журнала"
+}
+comp usage "mainInputs: MainInputs  " as E3  <<(T,blue) part>> [[psysml:f5d6dcd3-de59-4814-82b8-cd27f9ce37a0 ]] {
+}
+comp usage "planItems: PlanItems  " as E4  <<(T,blue) part>> [[psysml:82f7a830-8d2a-453e-b454-4a68166013fb ]] {
+}
+comp usage "partsSection: PartsSection  " as E5  <<(T,blue) part>> [[psysml:fa7bfb4e-6173-4832-97d2-a08cefc7ef39 ]] {
+}
+comp def "MainInputs" as E6  <<(T,blue) part  def>> [[psysml:9882e929-d4df-4383-92e5-7f6c9ca73d1d ]] {
+##//attributes//##
+dateInput <U+003D> "Дата: [DatePicker]"
+mileageInput <U+003D> "Пробег, км: [TextBox]"
+placeInput <U+003D> "Где выполнено: [TextBox]"
+}
+comp def "PlanItems" as E7  <<(T,blue) part  def>> [[psysml:a2be589a-d9a9-4d85-8de9-6686a25aaaba ]] {
+##//attributes//##
+items <U+003D> "Позиции плана: [CheckBox]"
+title <U+003D> "Выполненные работы"
+}
+comp def "PartsSection" as E8  <<(T,blue) part  def>> [[psysml:8e054497-0d39-4ffc-83c2-87844eaf47f9 ]] {
+##//attributes//##
+table <U+003D> "Расходник | Артикул | Цена"
+workCost <U+003D> "Стоимость работ: [TextBox]"
+}
+comp usage "saveBtn: SaveButton  " as E9  <<(T,blue) part>> [[psysml:8fdee680-3ae1-4db4-b38e-9630f1e63da8 ]] {
+}
+comp def "SaveButton" as E10  <<(T,blue) part  def>> [[psysml:a74c6dc1-e8a2-4df1-9084-320a79c47299 ]] {
+##//attributes//##
+label <U+003D> "Сохранить"
+}
+}
+E2 *-- E3 [[psysml:fe341254-c7ce-4d23-b7cf-ab48fa462018 ]] 
+E2 *-- E4 [[psysml:c0eba2d4-bb76-4892-9d19-62216ba47721 ]] 
+E2 *-- E5 [[psysml:b5dfdaf6-6867-4bf3-8e9f-b8a919a3aaa0 ]] 
+E3 --:|> E6 [[psysml:a17189bd-ebb5-44cf-a1dc-acdfa49a18fb ]] 
+E4 --:|> E7 [[psysml:178eb960-7c7e-45d1-9ed7-c419ecad1d1b ]] 
+E5 --:|> E8 [[psysml:9a865616-7315-4547-b46d-edd4e6967481 ]] 
+E8 *-- E9 [[psysml:cbcf19d5-5914-4cb6-b352-833da693108b ]] 
+E9 --:|> E10 [[psysml:8b2ea309-c681-4f4f-8276-5e19c3e38696 ]] 
+@enduml

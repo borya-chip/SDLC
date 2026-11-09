@@ -1,0 +1,53 @@
+@startuml
+skin sysmlbw
+<style>
+root {
+  FontName DejaVu Sans
+}
+</style>
+skinparam monochrome true
+skinparam wrapWidth 300
+hide circle
+skinparam linetype ortho
+
+package "CarKeeper_Expenses" as E1  [[psysml:a849d987-a9d1-4f58-ae89-b282a1a34f9d ]]  {
+comp def "ExpensesPage" as E2  <<(T,blue) part  def>> [[psysml:b5772e49-da18-4f24-b90b-763d18419ad7 ]] {
+##//attributes//##
+title <U+003D> "Расходы"
+}
+comp usage "periodFilter: PeriodFilter  " as E3  <<(T,blue) part>> [[psysml:04bb9517-b795-47e6-aaa3-5ab67f1406f2 ]] {
+}
+comp usage "summary: Summary  " as E4  <<(T,blue) part>> [[psysml:20ab78bc-2834-4273-917d-a748fdf42927 ]] {
+}
+comp usage "chart: Chart  " as E5  <<(T,blue) part>> [[psysml:febe5114-a6cf-4795-872d-145e3ab623cc ]] {
+}
+comp def "PeriodFilter" as E6  <<(T,blue) part  def>> [[psysml:22d9c0fe-6383-4e96-b211-98df8d6bc493 ]] {
+##//attributes//##
+carSelect <U+003D> "Автомобиль: [ComboBox]"
+period <U+003D> "Период: [DatePicker]"
+}
+comp def "Summary" as E7  <<(T,blue) part  def>> [[psysml:d4ecbdae-55b1-485b-8937-bfd9fb0fc9a2 ]] {
+##//attributes//##
+perKm <U+003D> "1 км: 0,09 BYN"
+total <U+003D> "Итого: 1 284,50 BYN"
+}
+comp usage "exportBtn: ExportButton  " as E8  <<(T,blue) part>> [[psysml:dc3add9c-7aaa-4eef-b52a-6fadeced6031 ]] {
+}
+comp def "Chart" as E9  <<(T,blue) part  def>> [[psysml:ae036dbc-498c-45ee-8aff-2cbb1f2274c5 ]] {
+##//attributes//##
+byMonth <U+003D> "[BarChart]"
+}
+comp def "ExportButton" as E10  <<(T,blue) part  def>> [[psysml:cda559e1-8901-41c0-8cb7-ccdf7465644c ]] {
+##//attributes//##
+label <U+003D> "Экспорт в PDF"
+}
+}
+E2 *-- E3 [[psysml:635b907d-170c-4655-8ef2-dadea5f279fd ]] 
+E2 *-- E4 [[psysml:a9172707-4645-4f3d-91e4-028a5994d931 ]] 
+E2 *-- E5 [[psysml:0e07f0cc-b07d-4b6d-8f2f-a4eb68d73cf2 ]] 
+E3 --:|> E6 [[psysml:0a3be4e4-6a42-4ea3-adea-154841104c44 ]] 
+E4 --:|> E7 [[psysml:5e8234cb-237d-4520-a051-cd1745ea2d0e ]] 
+E7 *-- E8 [[psysml:33809a4a-0513-4e21-bf0b-88ba363e9ebc ]] 
+E5 --:|> E9 [[psysml:242ab6f6-5fdb-4c66-9bd1-9d256553dcdd ]] 
+E8 --:|> E10 [[psysml:a3d09792-8723-4b79-b70e-fcf12e7329d6 ]] 
+@enduml
